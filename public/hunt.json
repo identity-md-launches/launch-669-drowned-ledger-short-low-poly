@@ -1,0 +1,35 @@
+{
+  "words": ["WORD-01", "WORD-02", "WORD-03", "WORD-04", "WORD-05", "WORD-06", "WORD-07", "WORD-08", "WORD-09", "WORD-10", "WORD-11", "WORD-12"],
+  "sources": {
+    "fish-1": 0,
+    "fish-2": 1,
+    "fish-3": 2,
+    "fish-4": 3,
+    "fish-5": 4,
+    "deliveries": 5,
+    "poker": 6,
+    "minesweeper": 7,
+    "key-lockbox": 8,
+    "scale": 9,
+    "fortune": 10,
+    "jigsaw": 11
+  },
+  "riddle": [
+    "First, put your ear to the bucket. The closed mouths still sing.",
+    "Next, bring what was promised to the line where nothing quite dries.",
+    "Let the little numbers on the wet flank settle their account.",
+    "Give the house its due; it has kept the last card warm for you.",
+    "Now count the teeth that never belonged in any mouth below the water.",
+    "Step softly between the rusted warnings. The quiet patch is yours.",
+    "Take the gaze you can see straight through, though it sees you all the same.",
+    "The paper on the square knows which small iron tongue will turn.",
+    "Let the patient black stitches tell you what the belly will not.",
+    "Balance what we brought ashore against what the water says it weighed.",
+    "Under the striped canvas, ask what has already happened tomorrow.",
+    "Last, lay the sodden scraps together. A debt is whole again."
+  ],
+  "order": ["fish-1", "deliveries", "fish-3", "poker", "fish-5", "minesweeper", "fish-2", "key-lockbox", "fish-4", "scale", "fortune", "jigsaw"],
+  "chest": "0x0000000000000000000000000000000000000000",
+  "answerHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "chainId": 1
+}

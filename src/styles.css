@@ -1,0 +1,2309 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #e6e5d5;
+  background: #111e1b;
+  font-synthesis: none;
+  --bg: #111e1b;
+  --surface: #1d2c25;
+  --surface-raised: #283a30;
+  --text: #e6e5d5;
+  --muted: #aab7a7;
+  --accent: #c7b879;
+  --line: #405043;
+  --danger: #e0a193;
+  --focus: #e0d99a;
+  --serif: Georgia, "Times New Roman", serif;
+  --text-small: 12px;
+  --text-label: 13px;
+  --text-body: 16px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  font-size: 16px;
+  color-scheme: dark;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button {
+  border: 0;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+button:focus-visible {
+  position: relative;
+  z-index: 5;
+}
+a {
+  color: var(--accent);
+  text-underline-offset: 4px;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+svg {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+.small {
+  font-size: 12px;
+}
+.muted {
+  color: var(--muted);
+}
+.eyebrow {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 2.2px;
+  color: var(--accent);
+}
+.eyebrow svg {
+  margin-inline-end: 5px;
+}
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  z-index: 1000;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 12px;
+}
+.skip-link:focus {
+  top: 12px;
+}
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 21px;
+  min-height: 21px;
+  padding: 1px 5px;
+  border: 1px solid #64736366;
+  border-radius: 3px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--muted);
+  background: #15231b66;
+}
+.game-shell {
+  height: 100svh;
+  min-height: 660px;
+  position: relative;
+  overflow: hidden;
+  background: #243c36;
+}
+.world-wrap {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+.world-wrap > div {
+  width: 100%;
+  height: 100%;
+}
+.world-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--accent);
+  font-family: var(--serif);
+  background: #263e38;
+}
+.world-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #101d18d9 0%, #13221b50 29%, transparent 56%),
+    linear-gradient(
+      0deg,
+      #0b1919e8 0%,
+      transparent 24%,
+      transparent 78%,
+      #0c1c1b80 100%
+    );
+  box-shadow: inset 0 0 110px #0b1b1850;
+}
+.topbar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 36px 20px;
+  border-bottom: 1px solid #b3c2a922;
+  background: linear-gradient(#14251f70, transparent);
+}
+.brand {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.15;
+  letter-spacing: 1px;
+}
+.brand strong {
+  font-weight: 400;
+  font-size: 23px;
+  letter-spacing: 4.5px;
+  text-transform: uppercase;
+}
+.brand-mark {
+  color: var(--accent);
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #b7b88466;
+  transform: rotate(45deg);
+}
+.brand-mark svg {
+  transform: rotate(-45deg);
+}
+.chapter-tag {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-inline-start: -46px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+.small-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.chapter-number {
+  margin-inline-start: 13px;
+  padding-inline-start: 22px;
+  border-inline-start: 1px solid var(--line);
+  color: var(--accent);
+}
+.top-tools {
+  display: flex;
+  gap: 8px;
+}
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.icon-btn:hover {
+  color: var(--text);
+  background: #a3b49c15;
+}
+.location-card {
+  position: absolute;
+  left: 40px;
+  top: 143px;
+  width: 310px;
+  pointer-events: none;
+}
+.location-kicker {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b3c1b0;
+}
+.location-kicker > span {
+  width: 17px;
+  height: 1px;
+  background: var(--accent);
+}
+.location-card h1 {
+  font-size: 59px;
+  line-height: 1.2;
+  letter-spacing: -2px;
+  margin-top: 8px;
+}
+.location-card h1 > span {
+  color: var(--accent);
+}
+.location-subtitle {
+  font: italic 16px/1.5 var(--serif);
+  color: #b4c0ad;
+  margin-top: 7px;
+}
+.location-rule {
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+  margin-top: 22px;
+  margin-bottom: 16px;
+}
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.2px;
+  color: var(--muted);
+}
+.weather-degree {
+  padding-inline-start: 13px;
+  margin-inline-start: 7px;
+  border-inline-start: 1px solid var(--line);
+}
+.voyage-status {
+  position: absolute;
+  right: 36px;
+  top: 141px;
+  width: 202px;
+  padding: 18px 20px;
+  background: #17271fdc;
+  border: 1px solid #87967e36;
+  backdrop-filter: blur(12px);
+}
+.day-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.day-status > svg {
+  color: var(--accent);
+}
+.day-status > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.day-status .eyebrow {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.day-status strong {
+  font: 20px/1.2 var(--serif);
+}
+.day-dial {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  padding: 2px;
+  margin-inline-start: auto;
+}
+.day-dial span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #20312a;
+}
+.dread-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 23px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.dread-label > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.dread-label strong {
+  font:
+    11px Arial,
+    sans-serif;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.dread-label strong span {
+  color: var(--muted);
+  font-size: 9px;
+}
+.dread-track {
+  height: 3px;
+  background: #56614f55;
+  margin-top: 9px;
+}
+.dread-track > span {
+  display: block;
+  height: 100%;
+  background: var(--danger);
+}
+.voyage-status > p {
+  font: italic 11px/1.6 var(--serif);
+  color: var(--muted);
+  margin-top: 11px;
+}
+.objective-card {
+  position: absolute;
+  top: 375px;
+  left: 40px;
+  width: 245px;
+}
+.objective-card .eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+.objective-card h2 {
+  font-size: 21px;
+  margin-top: 12px;
+  line-height: 1.3;
+}
+.objective-card > p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-top: 10px;
+  max-width: 230px;
+}
+.objective-progress {
+  background: none;
+  padding: 0;
+  text-align: left;
+  margin-top: 22px;
+  width: 100%;
+}
+.word-ticks {
+  display: flex;
+  gap: 5px;
+}
+.word-ticks i {
+  height: 4px;
+  width: 100%;
+  background: #b3bea333;
+}
+.word-ticks .found {
+  background: var(--accent);
+}
+.objective-progress > span:last-child {
+  margin-top: 11px;
+  font-size: 10px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.objective-progress strong {
+  font-size: 14px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+.objective-progress svg {
+  margin-inline-start: auto;
+}
+.compass-rose {
+  position: absolute;
+  right: 45px;
+  top: 360px;
+  width: 68px;
+  text-align: center;
+  pointer-events: none;
+  color: #bfccb17d;
+}
+.compass-rose > span:first-child {
+  font: 10px var(--serif);
+  color: var(--accent);
+}
+.compass-rose svg {
+  width: 68px;
+  height: 68px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.6;
+}
+.compass-rose .compass-fill {
+  fill: var(--accent);
+  stroke: none;
+}
+.bearing {
+  display: block;
+  font:
+    9px Arial,
+    sans-serif;
+  letter-spacing: 1.5px;
+  margin-top: 3px;
+}
+.arrival-card {
+  position: absolute;
+  left: 40px;
+  bottom: 117px;
+  width: 300px;
+}
+.arrival-card > .eyebrow {
+  display: none;
+}
+.arrival-card h2 {
+  font-size: 37px;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+}
+.arrival-card p {
+  font:
+    12px/1.85 Arial,
+    sans-serif;
+  color: var(--muted);
+  margin-top: 14px;
+  margin-bottom: 21px;
+}
+.arrival-card .primary-btn {
+  width: 100%;
+  justify-content: space-between;
+  padding-inline: 19px;
+}
+.arrival-card > .small {
+  display: block;
+  font-size: 9px;
+  text-align: center;
+  margin-top: 11px;
+  letter-spacing: 0.2px;
+}
+.game-shell:has(.arrival-card) .objective-card {
+  top: auto;
+  bottom: 147px;
+  left: auto;
+  right: 36px;
+  width: 202px;
+  padding: 0 2px;
+}
+.game-shell:has(.arrival-card) .objective-card h2 {
+  font-size: 18px;
+}
+.game-shell:has(.arrival-card) .objective-card > p {
+  font-size: 11px;
+  line-height: 1.75;
+}
+.game-shell:has(.arrival-card) .chart-preview {
+  display: none;
+}
+.primary-btn,
+.secondary-btn {
+  min-height: 44px;
+  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 1.4;
+  border-radius: 2px;
+}
+.primary-btn {
+  color: #202c22;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  font-weight: 600;
+}
+.primary-btn:hover {
+  background: #dacc8e;
+}
+.primary-btn kbd {
+  color: #31402d;
+  border-color: #43513955;
+  background: #2236210a;
+}
+.secondary-btn {
+  background: #1c2b24f5;
+  border: 1px solid #70816b75;
+  color: var(--text);
+}
+.secondary-btn:hover {
+  background: var(--surface-raised);
+  border-color: var(--muted);
+}
+.sailing-actions {
+  position: absolute;
+  left: 50%;
+  bottom: 134px;
+  transform: translateX(-50%);
+  min-width: 355px;
+  text-align: center;
+}
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.sailing-actions .primary-btn,
+.sailing-actions .secondary-btn {
+  white-space: nowrap;
+  box-shadow: 0 4px 20px #0c191944;
+}
+.course-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--text);
+  margin-bottom: 15px;
+  text-shadow: 0 1px 4px #10201e;
+}
+.course-line > svg {
+  color: var(--accent);
+}
+.course-line > small {
+  color: var(--accent);
+  font-size: 10px;
+  margin-inline-start: 7px;
+  font-variant-numeric: tabular-nums;
+}
+.course-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #14271acc;
+  border: 1px solid #66715888;
+  padding: 7px 15px;
+  min-height: 34px;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 12px;
+  border-radius: 3px;
+}
+.course-button:hover {
+  color: var(--text);
+}
+.chart-preview {
+  position: absolute;
+  right: 36px;
+  bottom: 119px;
+  width: 170px;
+  box-shadow: 0 0 25px #12221d77;
+}
+.chart-preview button {
+  display: block;
+  padding: 0;
+  background: #1b2b24e6;
+  border: 1px solid #83967b55;
+  width: 100%;
+}
+.chart-preview svg {
+  width: 100%;
+  opacity: 0.85;
+}
+.chart-preview button > span {
+  display: flex;
+  align-items: center;
+  padding: 9px 11px;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  border-top: 1px solid #73856a44;
+}
+.chart-preview kbd {
+  margin-inline-start: auto;
+  font-size: 9px;
+  min-width: 17px;
+  min-height: 17px;
+}
+.chart-water {
+  fill: #1d302a;
+}
+.chart-grid {
+  stroke: #69765b;
+  stroke-width: 0.35;
+  opacity: 0.55;
+  fill: none;
+}
+.chart-land {
+  fill: #465640;
+  stroke: #778063;
+  stroke-width: 0.7;
+}
+.chart-preview circle {
+  fill: #b2b884;
+}
+.chart-preview text {
+  font:
+    7px Georgia,
+    serif;
+  fill: #d4cca4;
+}
+.chart-boat {
+  fill: var(--accent);
+  stroke: #1b3025;
+  stroke-width: 1;
+}
+.bottom-note {
+  position: absolute;
+  left: 40px;
+  bottom: 31px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}
+.save-note {
+  position: absolute;
+  top: 20px;
+  left: 13px;
+  font-size: 8px;
+  color: #a8b7a2b0;
+  white-space: nowrap;
+}
+.bottom-nav {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  border: 1px solid #94a48644;
+  background: #18271fee;
+  padding: 4px;
+  backdrop-filter: blur(12px);
+  border-radius: 4px;
+  box-shadow: 0 8px 30px #08171033;
+}
+.bottom-nav > button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--muted);
+  padding: 12px 16px;
+  font-size: 11px;
+  min-height: 43px;
+  border-radius: 2px;
+}
+.bottom-nav > button:hover {
+  background: #34473266;
+  color: var(--text);
+}
+.bottom-nav > button + button {
+  border-inline-start: 1px solid #879b7326;
+}
+.nav-count {
+  font-size: 9px;
+  min-width: 15px;
+  text-align: center;
+  border: 1px solid var(--line);
+  color: var(--accent);
+  padding: 1px 3px;
+  border-radius: 2px;
+  margin-inline-start: -4px;
+}
+.bottom-nav kbd {
+  margin-inline-start: 7px;
+}
+.bottom-nav .mobile-map {
+  display: none;
+}
+.keyboard-hint {
+  position: absolute;
+  right: 36px;
+  bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  font-size: 9px;
+  color: var(--muted);
+}
+.keyboard-hint > span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.keyboard-hint kbd {
+  font-size: 8px;
+  min-width: 16px;
+  min-height: 16px;
+  padding: 1px 3px;
+}
+.keyboard-hint kbd:last-child {
+  margin-inline-end: 5px;
+}
+.toast {
+  position: absolute;
+  top: 111px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid #7a87684d;
+  border-inline-start: 2px solid var(--accent);
+  padding: 10px 13px;
+  color: var(--text);
+  width: max-content;
+  max-width: 440px;
+  box-shadow: 0 8px 30px #08171066;
+  font-size: 12px;
+}
+.toast > svg {
+  color: var(--accent);
+}
+.toast .icon-btn {
+  width: 26px;
+  height: 30px;
+}
+.word-toast {
+  max-width: 450px;
+}
+.word-toast > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.word-toast strong {
+  font: 25px/1.3 var(--serif);
+  color: var(--accent);
+}
+.word-toast > div > span:last-child {
+  color: var(--muted);
+  font-size: 11px;
+}
+.save-warning {
+  position: absolute;
+  top: 94px;
+  left: 0;
+  right: 0;
+  z-index: 11;
+  text-align: center;
+  background: #593d2e;
+  color: #fff0ca;
+  font-size: 12px;
+  padding: 8px;
+}
+.save-warning button {
+  background: transparent;
+  text-decoration: underline;
+  margin-inline-start: 10px;
+}
+.pause-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 100px #091915bb;
+  text-align: center;
+  padding: 40px;
+  z-index: 12;
+  width: min(400px, 90vw);
+}
+.pause-card > svg {
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.pause-card h2 {
+  font-size: 30px;
+}
+.pause-card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 14px 0 24px;
+}
+.touch-stick {
+  display: none;
+}
+.world-marker {
+  background: #192c20db;
+  color: #d4d4b4;
+  border: 1px solid #a6b18488;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 0 5px #10251d33;
+  white-space: nowrap;
+}
+.world-marker:hover,
+.world-marker.is-selected {
+  background: #c7b879;
+  color: #1b2b22;
+  border-color: #e4d593;
+}
+.world-marker--site,
+.world-marker--npc {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  font-size: 11px;
+  opacity: 0.9;
+}
+.world-marker--npc {
+  border-color: #c5b57288;
+  color: #d8c788;
+}
+.world-marker-label {
+  display: none;
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font:
+    11px Arial,
+    sans-serif;
+}
+.world-marker:hover .world-marker-label,
+.world-marker:focus-visible .world-marker-label,
+.world-marker.is-selected .world-marker-label {
+  display: block;
+}
+.world-marker--shrine {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.modal {
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid #72816380;
+  border-radius: 5px;
+  padding: 0;
+  max-height: 85svh;
+  width: 600px;
+  max-width: calc(100vw - 32px);
+  box-shadow: 0 25px 150px #0009;
+  overscroll-behavior: contain;
+}
+.modal::backdrop {
+  background: #071410aa;
+  backdrop-filter: blur(7px);
+}
+.modal--wide {
+  width: 800px;
+}
+.modal-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 25px 30px;
+  background: var(--surface);
+  z-index: 10;
+  border-bottom: 1px solid var(--line);
+}
+.modal-header .eyebrow {
+  font-size: 9px;
+  margin-bottom: 6px;
+}
+.modal-header h2 {
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+.modal-body {
+  padding: 28px 30px 32px;
+}
+.panel-intro {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 65ch;
+  margin-bottom: 24px;
+}
+.notice {
+  padding: 16px 18px;
+  background: #111f1a;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 20px 0;
+}
+.notice svg {
+  margin-inline-end: 6px;
+  color: var(--accent);
+}
+.notice .secondary-btn {
+  display: flex;
+  margin-top: 15px;
+}
+.text-button {
+  display: block;
+  min-height: 44px;
+  background: transparent;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: var(--muted);
+  margin-top: 16px;
+  padding: 10px 0;
+}
+.tab-row {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.tab-row button {
+  padding: 12px 15px;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+  border-bottom: 2px solid transparent;
+}
+.tab-row button[aria-pressed="true"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.tab-row span {
+  font-size: 10px;
+  margin-inline-start: 8px;
+  color: var(--muted);
+}
+.fish-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.fish-entry {
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: #19271f;
+  display: flex;
+  flex-direction: column;
+}
+.fish-entry .eyebrow {
+  font-size: 8px;
+  color: var(--muted);
+  letter-spacing: 1.6px;
+}
+.fish-entry h3 {
+  font-size: 19px;
+  line-height: 1.3;
+  margin: 7px 0 8px;
+}
+.fish-entry p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.fish-illustration {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64785d;
+}
+.discovered .fish-illustration {
+  color: var(--accent);
+}
+.fish-illustration > svg {
+  width: 100%;
+  max-width: 150px;
+}
+.discovered-label {
+  margin-top: 15px;
+  color: var(--accent);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.field-notes article {
+  padding: 0 0 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.field-notes h3 {
+  font-size: 23px;
+  margin: 12px 0;
+}
+.field-notes p {
+  font: 16px/1.85 var(--serif);
+  color: var(--muted);
+  max-width: 65ch;
+  margin-top: 12px;
+}
+mark {
+  color: var(--accent);
+  background: #c6b97a18;
+  border-bottom: 1px solid var(--accent);
+  padding: 2px 5px;
+}
+.bank-count {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 23px;
+}
+.bank-count strong {
+  font: 44px var(--serif);
+  color: var(--accent);
+}
+.bank-count span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.word-bank {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.word-tile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #2a3c2e;
+  padding: 15px 12px;
+  font: 17px var(--serif);
+  border: 1px solid #83967477;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+.word-tile > svg {
+  color: var(--accent);
+}
+.word-tile.empty {
+  border-style: dashed;
+  background: transparent;
+  color: var(--muted);
+  font:
+    11px Arial,
+    sans-serif;
+}
+.word-tile.empty svg {
+  color: #829179;
+}
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 27px 0 15px;
+}
+.section-heading h3 {
+  font-size: 20px;
+}
+.section-heading > span {
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.quest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.quest-list > button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  text-align: start;
+  min-height: 67px;
+  padding: 12px;
+  background: #17251f;
+  border: 1px solid #40504380;
+}
+.quest-list > button:hover {
+  background: var(--surface-raised);
+}
+.quest-dot {
+  font-size: 24px;
+  color: var(--muted);
+  width: 26px;
+  text-align: center;
+}
+.quest-dot.complete {
+  color: var(--accent);
+  font-size: 17px;
+}
+.quest-list strong,
+.chart-destinations strong,
+.site-grid strong {
+  font-size: 13px;
+  font-weight: 400;
+  display: block;
+}
+.quest-list small,
+.chart-destinations small,
+.site-grid small {
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+  margin-top: 4px;
+}
+.quest-state {
+  font-size: 9px;
+  color: var(--accent);
+  margin-inline-start: auto;
+  white-space: nowrap;
+}
+.quest-list + .small {
+  margin-top: 20px;
+}
+.large-chart {
+  border: 1px solid #65795a99;
+  background: #21342c;
+  overflow: hidden;
+}
+.large-chart > svg {
+  width: 100%;
+  display: block;
+}
+.chart-shore {
+  stroke: #b1b59355;
+  stroke-dasharray: 2 3;
+  fill: none;
+}
+.chart-title {
+  fill: #bec4a7;
+  font:
+    11px Georgia,
+    serif;
+  letter-spacing: 2px;
+}
+.chart-destinations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+.chart-destinations > button {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  min-height: 66px;
+  text-align: left;
+  background: #17251f;
+  padding: 13px;
+  border: 1px solid var(--line);
+}
+.chart-destinations > button:hover {
+  background: var(--surface-raised);
+}
+.chart-destinations > button > svg:last-child {
+  margin-inline-start: auto;
+  color: var(--accent);
+}
+.destination-number {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #879776;
+  border-radius: 50%;
+  font: 13px var(--serif);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.dock-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+.villager-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.villager-card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 0 18px 0 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #18271f;
+  text-align: start;
+}
+.villager-card:hover {
+  background: var(--surface-raised);
+}
+.villager-card .pepe-portrait {
+  width: 65px;
+  height: 73px;
+  flex-shrink: 0;
+}
+.villager-card strong {
+  font: 19px var(--serif);
+}
+.villager-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 5px;
+}
+.villager-card > svg:last-child {
+  margin-inline-start: auto;
+  color: var(--accent);
+}
+.site-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+.site-grid > button {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-align: start;
+  background: #17251f;
+  border: 1px solid var(--line);
+  padding: 14px;
+  min-height: 82px;
+}
+.site-grid > button:hover {
+  background: var(--surface-raised);
+}
+.site-grid > button > svg {
+  color: var(--accent);
+}
+.dialogue-person {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.dialogue-person .pepe-portrait {
+  width: 110px;
+  height: 124px;
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.dialogue-person p {
+  font: italic 16px/1.7 var(--serif);
+  color: var(--muted);
+  margin-top: 10px;
+}
+.dialogue blockquote {
+  font: 23px/1.65 var(--serif);
+  margin: 26px 0;
+  color: var(--text);
+}
+.dialogue > .primary-btn {
+  width: 100%;
+}
+.coming-soon {
+  text-align: center;
+  padding: 24px 15px 34px;
+}
+.coming-soon h3 {
+  font-size: 36px;
+  margin: 20px 0 24px;
+}
+.coming-soon p {
+  font: italic 20px/1.7 var(--serif);
+}
+.coming-soon p.muted {
+  font:
+    12px/1.7 Arial,
+    sans-serif;
+  margin-top: 24px;
+}
+.help-content h3 {
+  font-size: 24px;
+  margin: 27px 0 15px;
+}
+.help-content > p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 15px;
+}
+.controls-list {
+  margin: 0;
+}
+.controls-list > div {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #40504388;
+  font-size: 13px;
+}
+.controls-list dt {
+  color: var(--accent);
+}
+.controls-list dd {
+  margin: 0;
+  color: var(--muted);
+}
+.setting {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  margin-top: 20px;
+  font-size: 13px;
+}
+.setting input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+.fishing-panel {
+  position: absolute;
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  left: 50%;
+  bottom: 115px;
+  transform: translateX(-50%);
+  padding: 22px 26px;
+  background: #17261ff5;
+  border: 1px solid #80947199;
+  border-radius: 4px;
+  box-shadow: 0 15px 50px #0c191a80;
+  z-index: 9;
+  text-align: center;
+}
+.fishing-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--accent);
+}
+.fishing-heading .eyebrow {
+  font-size: 9px;
+}
+.fishing-heading .icon-btn {
+  margin-inline-start: auto;
+  width: 28px;
+  height: 28px;
+}
+.fishing-panel h2 {
+  font-size: 27px;
+  margin: 10px 0 25px;
+}
+.timing-bar {
+  height: 27px;
+  background: #4f594633;
+  border: 1px solid #74806e88;
+  position: relative;
+}
+.catch-zone {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  background: #86a16a;
+  border-inline: 2px solid #c6d8ab;
+}
+.catch-zone > span {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  white-space: nowrap;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.needle {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  width: 2px;
+  height: 39px;
+  background: #f4e6b2;
+  box-shadow: 0 0 8px #e1cf7e77;
+}
+.needle:before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  border-top: 7px solid #e6d791;
+  border-inline: 5px solid transparent;
+}
+.fishing-progress {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 37px;
+}
+.fishing-progress span {
+  width: 23px;
+  height: 23px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #73826288;
+  font-size: 10px;
+  color: var(--muted);
+  border-radius: 50%;
+}
+.fishing-progress .is-hit {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+.fishing-feedback {
+  font-size: 11px;
+  color: var(--muted);
+  min-height: 36px;
+  margin: 13px 0;
+}
+.fishing-panel > .primary-btn,
+.fishing-panel > .secondary-btn {
+  width: 100%;
+}
+.fishing-panel > .small {
+  font-size: 9px;
+  margin-top: 12px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  button {
+    transition:
+      background-color 130ms ease-out,
+      color 130ms ease-out,
+      border-color 130ms ease-out,
+      transform 130ms ease-out;
+  }
+  button:active {
+    transform: scale(0.96);
+  }
+  .dread-track > span {
+    transition: width 300ms linear;
+  }
+}
+@media (min-width: 1500px) {
+  .location-card {
+    top: 160px;
+    left: 55px;
+  }
+  .location-card h1 {
+    font-size: 69px;
+  }
+  .objective-card {
+    left: 55px;
+    top: 410px;
+    width: 255px;
+  }
+  .arrival-card {
+    left: 55px;
+    bottom: 155px;
+    width: 335px;
+  }
+  .arrival-card h2 {
+    font-size: 43px;
+  }
+  .arrival-card p {
+    font-size: 13px;
+  }
+  .topbar {
+    padding-inline: 52px;
+  }
+  .voyage-status {
+    right: 52px;
+    top: 160px;
+  }
+  .bottom-note {
+    left: 55px;
+  }
+  .chart-preview {
+    right: 52px;
+    bottom: 150px;
+    width: 190px;
+  }
+  .sailing-actions {
+    bottom: 160px;
+  }
+  .game-shell:has(.arrival-card) .objective-card {
+    right: 52px;
+    bottom: 170px;
+  }
+  .keyboard-hint {
+    right: 52px;
+  }
+  .bottom-nav {
+    bottom: 33px;
+  }
+}
+@media (max-height: 760px) and (min-width: 901px) {
+  .location-card {
+    top: 122px;
+  }
+  .location-card h1 {
+    font-size: 50px;
+  }
+  .location-rule {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  .objective-card {
+    top: 330px;
+  }
+  .arrival-card {
+    bottom: 107px;
+  }
+  .arrival-card h2 {
+    font-size: 32px;
+  }
+  .arrival-card p {
+    font-size: 11px;
+    margin: 10px 0 15px;
+  }
+  .voyage-status {
+    top: 125px;
+  }
+  .sailing-actions {
+    bottom: 120px;
+  }
+  .objective-card > p {
+    line-height: 1.7;
+  }
+  .game-shell:has(.arrival-card) .objective-card {
+    bottom: 132px;
+  }
+}
+@media (max-width: 1150px) {
+  .chapter-tag {
+    margin-inline-start: 0;
+  }
+  .chapter-number {
+    display: none;
+  }
+  .bottom-note {
+    bottom: 90px;
+  }
+  .keyboard-hint {
+    bottom: 92px;
+    font-size: 8px;
+  }
+  .bottom-nav {
+    bottom: 20px;
+  }
+  .location-card {
+    left: 28px;
+  }
+  .topbar {
+    padding-inline: 28px;
+  }
+  .location-card h1 {
+    font-size: 52px;
+  }
+  .objective-card {
+    left: 28px;
+    width: 215px;
+  }
+  .objective-card > p {
+    font-size: 11px;
+  }
+  .arrival-card {
+    left: 28px;
+    width: 267px;
+    bottom: 143px;
+  }
+  .arrival-card h2 {
+    font-size: 34px;
+  }
+  .voyage-status {
+    right: 28px;
+    width: 180px;
+    padding: 15px;
+  }
+  .game-shell:has(.arrival-card) .objective-card {
+    right: 28px;
+    width: 180px;
+    bottom: 160px;
+  }
+  .chart-preview {
+    width: 140px;
+    right: 28px;
+    bottom: 143px;
+  }
+  .sailing-actions {
+    bottom: 145px;
+    left: 53%;
+  }
+  .compass-rose {
+    right: 35px;
+  }
+  .bottom-note {
+    left: 28px;
+  }
+}
+@media (max-width: 900px) {
+  .game-shell {
+    min-height: 720px;
+  }
+  .topbar {
+    padding: 20px 24px;
+  }
+  .brand {
+    font-size: 12px;
+  }
+  .brand strong {
+    font-size: 19px;
+  }
+  .brand-mark {
+    width: 37px;
+    height: 37px;
+  }
+  .chapter-tag {
+    font-size: 9px;
+  }
+  .top-tools .icon-btn {
+    width: 33px;
+  }
+  .help-button {
+    display: none;
+  }
+  .location-card {
+    top: 127px;
+    left: 24px;
+  }
+  .location-card h1 {
+    font-size: 48px;
+  }
+  .location-card .eyebrow {
+    font-size: 8px;
+  }
+  .location-subtitle {
+    font-size: 14px;
+  }
+  .voyage-status {
+    top: 124px;
+    right: 24px;
+    width: 161px;
+    padding: 13px;
+  }
+  .voyage-status > p {
+    font-size: 10px;
+  }
+  .day-status {
+    gap: 8px;
+  }
+  .day-dial {
+    display: none;
+  }
+  .day-status > svg {
+    width: 25px;
+  }
+  .day-status strong {
+    font-size: 19px;
+  }
+  .objective-card {
+    display: none;
+  }
+  .game-shell:has(.arrival-card) .objective-card {
+    display: none;
+  }
+  .arrival-card {
+    left: 24px;
+    bottom: 142px;
+    width: 268px;
+  }
+  .compass-rose {
+    top: 333px;
+    right: 28px;
+  }
+  .chart-preview {
+    width: 130px;
+    right: 24px;
+    bottom: 145px;
+  }
+  .bottom-note {
+    left: 24px;
+  }
+  .keyboard-hint {
+    right: 24px;
+  }
+  .sailing-actions {
+    left: 50%;
+    bottom: 149px;
+  }
+  .sailing-actions .secondary-btn {
+    padding-inline: 12px;
+  }
+  .sailing-actions .primary-btn {
+    padding-inline: 14px;
+  }
+  .sailing-actions kbd {
+    display: none;
+  }
+  .game-shell:has(.sailing-actions) .chart-preview {
+    display: none;
+  }
+  .toast {
+    top: 90px;
+    max-width: calc(100vw - 48px);
+  }
+  .fish-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .game-shell {
+    min-height: 650px;
+  }
+  .topbar {
+    padding: 17px 19px;
+  }
+  .brand {
+    font-size: 11px;
+    gap: 12px;
+  }
+  .brand strong {
+    font-size: 18px;
+    letter-spacing: 3px;
+  }
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+  }
+  .brand-mark svg {
+    width: 22px;
+  }
+  .top-tools {
+    gap: 4px;
+  }
+  .top-tools .icon-btn {
+    width: 34px;
+    height: 36px;
+  }
+  .chapter-tag {
+    display: none;
+  }
+  .location-card {
+    top: 106px;
+    left: 20px;
+    width: 230px;
+  }
+  .location-card h1 {
+    font-size: 42px;
+    letter-spacing: -1.5px;
+  }
+  .location-kicker {
+    font-size: 7px !important;
+    letter-spacing: 1.5px;
+  }
+  .location-subtitle {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .location-rule {
+    margin-top: 14px;
+    margin-bottom: 10px;
+    width: 23px;
+  }
+  .weather {
+    font-size: 9px;
+  }
+  .weather > svg {
+    width: 14px;
+  }
+  .voyage-status {
+    top: 105px;
+    right: 18px;
+    width: 100px;
+    padding: 10px;
+    background: #18281fc9;
+  }
+  .day-status > svg {
+    width: 17px;
+    height: 17px;
+  }
+  .day-status .eyebrow {
+    font-size: 7px;
+    letter-spacing: 1.2px;
+  }
+  .day-status strong {
+    font-size: 15px;
+  }
+  .dread-label {
+    margin-top: 15px;
+    font-size: 9px;
+  }
+  .dread-label > span > svg {
+    display: none;
+  }
+  .dread-label strong {
+    font-size: 9px;
+  }
+  .dread-label strong span {
+    font-size: 7px;
+  }
+  .voyage-status > p {
+    display: none;
+  }
+  .dread-track {
+    margin-top: 7px;
+  }
+  .compass-rose {
+    display: none;
+  }
+  .arrival-card {
+    left: 20px;
+    bottom: 143px;
+    width: 265px;
+  }
+  .arrival-card h2 {
+    font-size: 34px;
+  }
+  .arrival-card p {
+    font-size: 11px;
+    margin-top: 12px;
+    margin-bottom: 18px;
+  }
+  .arrival-card .primary-btn {
+    min-height: 46px;
+  }
+  .arrival-card > .small {
+    font-size: 8px;
+  }
+  .bottom-nav {
+    bottom: calc(15px + env(safe-area-inset-bottom));
+    max-width: calc(100% - 30px);
+    width: 385px;
+    justify-content: space-around;
+    padding: 3px;
+  }
+  .bottom-nav > button {
+    padding: 10px 11px;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 9px;
+    flex: 1;
+    position: relative;
+  }
+  .bottom-nav > button > svg {
+    width: 18px;
+    height: 18px;
+  }
+  .bottom-nav kbd {
+    display: none;
+  }
+  .bottom-nav .mobile-map {
+    display: flex;
+  }
+  .nav-count {
+    position: absolute;
+    right: 13px;
+    top: 6px;
+    min-width: 12px;
+    font-size: 7px;
+    padding: 0px 2px;
+    background: var(--surface);
+  }
+  .bottom-note {
+    left: 20px;
+    bottom: 103px;
+    font-size: 8px;
+    gap: 6px;
+  }
+  .save-note {
+    display: none;
+  }
+  .keyboard-hint {
+    display: none;
+  }
+  .sailing-actions {
+    bottom: 151px;
+    min-width: 0;
+    width: calc(100% - 40px);
+    left: 20px;
+    transform: none;
+  }
+  .action-row {
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+  }
+  .action-row > button {
+    min-width: 157px;
+    min-height: 44px;
+    font-size: 11px;
+    gap: 8px;
+  }
+  .course-line {
+    font-size: 9px;
+    justify-content: flex-end;
+    margin-bottom: 11px;
+    gap: 6px;
+  }
+  .course-line > span {
+    max-width: 210px;
+    overflow-wrap: break-word;
+  }
+  .course-button {
+    float: right;
+    min-height: 35px;
+    font-size: 10px;
+  }
+  .touch-stick {
+    position: absolute;
+    left: 28px;
+    bottom: 168px;
+    width: 90px;
+    height: 90px;
+    border: 1px solid #aec09850;
+    border-radius: 50%;
+    background: #18291eaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: none;
+  }
+  .touch-stick > span {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #a9b695aa;
+    background: #344734aa;
+    color: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .toast {
+    top: 248px;
+    left: 20px;
+    transform: none;
+    max-width: calc(100% - 40px);
+    font-size: 11px;
+    padding: 8px 11px;
+    gap: 8px;
+    z-index: 8;
+  }
+  .game-notice {
+    background: #17271feb;
+  }
+  .word-toast strong {
+    font-size: 22px;
+  }
+  .word-toast > div > span:last-child {
+    font-size: 10px;
+  }
+  .modal {
+    max-height: 90svh;
+    max-width: calc(100vw - 20px);
+    border-radius: 4px;
+  }
+  .modal-header {
+    padding: 19px 20px;
+  }
+  .modal-header h2 {
+    font-size: 27px;
+  }
+  .modal-body {
+    padding: 22px 20px;
+  }
+  .modal-header .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.8px;
+  }
+  .modal-header .icon-btn {
+    width: 35px;
+    height: 40px;
+  }
+  .panel-intro {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+  .fish-grid {
+    gap: 9px;
+  }
+  .fish-entry {
+    padding: 13px;
+  }
+  .fish-entry h3 {
+    font-size: 17px;
+  }
+  .fish-entry p {
+    font-size: 11px;
+  }
+  .fish-illustration {
+    height: 60px;
+  }
+  .tab-row button {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+  .tab-row span {
+    font-size: 9px;
+    margin-inline-start: 4px;
+  }
+  .word-bank {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .word-tile {
+    font-size: 17px;
+    padding: 14px 10px;
+  }
+  .word-tile.empty {
+    font-size: 10px;
+  }
+  .section-heading h3 {
+    font-size: 18px;
+  }
+  .quest-list > button {
+    gap: 8px;
+    padding: 10px;
+  }
+  .quest-state {
+    font-size: 8px;
+  }
+  .quest-list strong {
+    font-size: 12px;
+  }
+  .quest-list small {
+    font-size: 10px;
+  }
+  .quest-dot {
+    width: 18px;
+    font-size: 21px;
+  }
+  .chart-destinations {
+    grid-template-columns: 1fr;
+  }
+  .large-chart {
+    margin-inline: -5px;
+  }
+  .chart-destinations strong {
+    font-size: 12px;
+  }
+  .dock-actions {
+    gap: 8px;
+  }
+  .dock-actions .secondary-btn {
+    padding-inline: 12px;
+    font-size: 11px;
+    gap: 7px;
+  }
+  .site-grid {
+    grid-template-columns: 1fr;
+  }
+  .dialogue-person {
+    gap: 15px;
+  }
+  .dialogue-person .pepe-portrait {
+    width: 85px;
+    height: 96px;
+  }
+  .dialogue-person p {
+    font-size: 14px;
+  }
+  .dialogue-person .eyebrow {
+    font-size: 8px;
+  }
+  .dialogue blockquote {
+    font-size: 20px;
+    line-height: 1.65;
+  }
+  .controls-list > div {
+    grid-template-columns: 100px 1fr;
+    font-size: 12px;
+  }
+  .help-content > p {
+    font-size: 13px;
+  }
+  .setting {
+    font-size: 12px;
+  }
+  .fishing-panel {
+    bottom: 137px;
+    padding: 17px 20px;
+    width: 340px;
+  }
+  .fishing-panel h2 {
+    font-size: 24px;
+  }
+  .fishing-panel .eyebrow {
+    font-size: 8px;
+  }
+  .world-marker {
+    min-width: 30px;
+    min-height: 30px;
+  }
+  .world-marker--npc,
+  .world-marker--site {
+    min-width: 24px;
+    min-height: 24px;
+  }
+  .world-marker-label {
+    font-size: 10px;
+  }
+  .save-warning {
+    top: 80px;
+  }
+  .primary-btn,
+  .secondary-btn {
+    min-height: 44px;
+  }
+  .chart-preview {
+    display: none;
+  }
+}
+@media (max-width: 365px) {
+  .location-card {
+    left: 16px;
+    top: 104px;
+    width: 197px;
+  }
+  .location-card h1 {
+    font-size: 34px;
+  }
+  .location-kicker {
+    font-size: 6px !important;
+    letter-spacing: 1.1px;
+  }
+  .location-subtitle {
+    font-size: 11px;
+  }
+  .voyage-status {
+    right: 15px;
+    width: 87px;
+    padding: 8px;
+    top: 104px;
+  }
+  .day-status {
+    gap: 5px;
+  }
+  .day-status strong {
+    font-size: 13px;
+  }
+  .day-status .eyebrow {
+    font-size: 6px;
+  }
+  .day-status > svg {
+    width: 15px;
+  }
+  .arrival-card {
+    left: 20px;
+    width: 247px;
+  }
+  .arrival-card h2 {
+    font-size: 31px;
+  }
+  .bottom-nav > button {
+    padding-inline: 8px;
+  }
+  .bottom-note {
+    font-size: 7px;
+  }
+  .sailing-actions {
+    width: calc(100% - 32px);
+    left: 16px;
+  }
+  .action-row > button {
+    min-width: 140px;
+  }
+  .touch-stick {
+    left: 21px;
+    width: 80px;
+    height: 80px;
+    bottom: 169px;
+  }
+  .course-line > span {
+    max-width: 185px;
+  }
+  .modal-body {
+    padding: 20px 15px;
+  }
+  .modal-header {
+    padding: 17px 15px;
+  }
+  .modal-header h2 {
+    font-size: 24px;
+  }
+  .fish-entry {
+    padding: 10px;
+  }
+  .fish-entry h3 {
+    font-size: 16px;
+  }
+  .field-notes p {
+    font-size: 15px;
+  }
+}
+@media (forced-colors: active) {
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline-color: Highlight;
+  }
+  .primary-btn,
+  .secondary-btn,
+  .icon-btn {
+    border: 1px solid ButtonText;
+  }
+  .dread-track,
+  .catch-zone,
+  .needle {
+    forced-color-adjust: none;
+  }
+}
